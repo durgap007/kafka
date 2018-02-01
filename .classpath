@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry exported="true" kind="lib" path="C:/ProgramData/kafka/kafka_2.11-0.11.0.1/libs"/>
-	<classpathentry exported="true" kind="lib" path="C:/Library/slf4j-api-1.7.25.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Library/com.fasterxml.jackson.databind.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Library/argparse4j-0.2.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Library/kafka-clients-0.9.0.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Library/talendclasses.zip"/>
-	<classpathentry exported="true" kind="lib" path="C:/Library/ojdbc7.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Library/jackson-core-2.8.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Library/jackson-annotations-2.1.2.jar"/>
+	<classpathentry kind="src" path="lib_kafka_2.11-0.11.0.1"/>
+	<classpathentry kind="src" path="lib"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="lib/argparse4j-0.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/com.fasterxml.jackson.databind.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-annotations-2.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-core-2.8.1.jar"/>
+	<classpathentry kind="lib" path="lib/kafka-clients-0.9.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc7.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.7.25.jar"/>
+	<classpathentry kind="lib" path="lib/talendclasses.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

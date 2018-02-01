@@ -21,6 +21,12 @@ public class row1Struct
 
 	public String loopKey;
 
+	public BigDecimal ENTERPRISE_ID;
+
+	public BigDecimal getENTERPRISE_ID() {
+		return this.ENTERPRISE_ID;
+	}
+
 	public BigDecimal CASE_ID;
 
 	public BigDecimal getCASE_ID() {
@@ -603,38 +609,34 @@ public class row1Struct
 		return this.INITIAL_JUSTIFICATION_J;
 	}
 
-	public BigDecimal LOCK_STATUS_ID;
+	public BigDecimal DLP_REVISION_NUMBER;
 
-	public BigDecimal getLOCK_STATUS_ID() {
-		return this.LOCK_STATUS_ID;
+	public BigDecimal getDLP_REVISION_NUMBER() {
+		return this.DLP_REVISION_NUMBER;
 	}
 
-	public BigDecimal MEDICALLY_CONFIRM;
+	public BigDecimal REVISION_DELETE_FLAG;
 
-	public BigDecimal getMEDICALLY_CONFIRM() {
-		return this.MEDICALLY_CONFIRM;
+	public BigDecimal getREVISION_DELETE_FLAG() {
+		return this.REVISION_DELETE_FLAG;
 	}
 
-	public BigDecimal ENTERPRISE_ID;
+	public BigDecimal DELETED_FLAG;
 
-	public BigDecimal getENTERPRISE_ID() {
-		return this.ENTERPRISE_ID;
+	public BigDecimal getDELETED_FLAG() {
+		return this.DELETED_FLAG;
 	}
 
-	@Override
-	public int hashCode() {
-		if (this.hashCodeDirty) {
-			final int prime = PRIME;
-			int result = DEFAULT_HASHCODE;
+	public java.util.Date EFFECTIVE_START_DATE;
 
-			result = prime
-					* result
-					+ ((this.CASE_ID == null) ? 0 : this.CASE_ID.hashCode());
+	public java.util.Date getEFFECTIVE_START_DATE() {
+		return this.EFFECTIVE_START_DATE;
+	}
 
-			this.hashCode = result;
-			this.hashCodeDirty = false;
-		}
-		return this.hashCode;
+	public java.util.Date EFFECTIVE_END_DATE;
+
+	public java.util.Date getEFFECTIVE_END_DATE() {
+		return this.EFFECTIVE_END_DATE;
 	}
 
 	@Override
@@ -647,6 +649,14 @@ public class row1Struct
 			return false;
 		final row1Struct other = (row1Struct) obj;
 
+		if (this.ENTERPRISE_ID == null) {
+			if (other.ENTERPRISE_ID != null)
+				return false;
+
+		} else if (!this.ENTERPRISE_ID.equals(other.ENTERPRISE_ID))
+
+			return false;
+
 		if (this.CASE_ID == null) {
 			if (other.CASE_ID != null)
 				return false;
@@ -655,11 +665,21 @@ public class row1Struct
 
 			return false;
 
+		if (this.DLP_REVISION_NUMBER == null) {
+			if (other.DLP_REVISION_NUMBER != null)
+				return false;
+
+		} else if (!this.DLP_REVISION_NUMBER
+				.equals(other.DLP_REVISION_NUMBER))
+
+			return false;
+
 		return true;
 	}
 
 	public void copyDataTo(row1Struct other) {
 
+		other.ENTERPRISE_ID = this.ENTERPRISE_ID;
 		other.CASE_ID = this.CASE_ID;
 		other.CASE_NUM = this.CASE_NUM;
 		other.REV = this.REV;
@@ -757,15 +777,19 @@ public class row1Struct
 		other.UD_TEXT_11_J = this.UD_TEXT_11_J;
 		other.UD_TEXT_12_J = this.UD_TEXT_12_J;
 		other.INITIAL_JUSTIFICATION_J = this.INITIAL_JUSTIFICATION_J;
-		other.LOCK_STATUS_ID = this.LOCK_STATUS_ID;
-		other.MEDICALLY_CONFIRM = this.MEDICALLY_CONFIRM;
-		other.ENTERPRISE_ID = this.ENTERPRISE_ID;
+		other.DLP_REVISION_NUMBER = this.DLP_REVISION_NUMBER;
+		other.REVISION_DELETE_FLAG = this.REVISION_DELETE_FLAG;
+		other.DELETED_FLAG = this.DELETED_FLAG;
+		other.EFFECTIVE_START_DATE = this.EFFECTIVE_START_DATE;
+		other.EFFECTIVE_END_DATE = this.EFFECTIVE_END_DATE;
 
 	}
 
 	public void copyKeysDataTo(row1Struct other) {
 
+		other.ENTERPRISE_ID = this.ENTERPRISE_ID;
 		other.CASE_ID = this.CASE_ID;
+		other.DLP_REVISION_NUMBER = this.DLP_REVISION_NUMBER;
 
 	}
 
@@ -836,6 +860,8 @@ public class row1Struct
 			try {
 
 				int length = 0;
+
+				this.ENTERPRISE_ID = (BigDecimal) dis.readObject();
 
 				this.CASE_ID = (BigDecimal) dis.readObject();
 
@@ -1031,11 +1057,15 @@ public class row1Struct
 
 				this.INITIAL_JUSTIFICATION_J = readString(dis);
 
-				this.LOCK_STATUS_ID = (BigDecimal) dis.readObject();
+				this.DLP_REVISION_NUMBER = (BigDecimal) dis.readObject();
 
-				this.MEDICALLY_CONFIRM = (BigDecimal) dis.readObject();
+				this.REVISION_DELETE_FLAG = (BigDecimal) dis.readObject();
 
-				this.ENTERPRISE_ID = (BigDecimal) dis.readObject();
+				this.DELETED_FLAG = (BigDecimal) dis.readObject();
+
+				this.EFFECTIVE_START_DATE = readDate(dis);
+
+				this.EFFECTIVE_END_DATE = readDate(dis);
 
 			} catch (IOException e) {
 				throw new RuntimeException(e);
@@ -1051,6 +1081,10 @@ public class row1Struct
 
 	public void writeData(ObjectOutputStream dos) {
 		try {
+
+			// BigDecimal
+
+			dos.writeObject(this.ENTERPRISE_ID);
 
 			// BigDecimal
 
@@ -1442,15 +1476,23 @@ public class row1Struct
 
 			// BigDecimal
 
-			dos.writeObject(this.LOCK_STATUS_ID);
+			dos.writeObject(this.DLP_REVISION_NUMBER);
 
 			// BigDecimal
 
-			dos.writeObject(this.MEDICALLY_CONFIRM);
+			dos.writeObject(this.REVISION_DELETE_FLAG);
 
 			// BigDecimal
 
-			dos.writeObject(this.ENTERPRISE_ID);
+			dos.writeObject(this.DELETED_FLAG);
+
+			// java.util.Date
+
+			writeDate(this.EFFECTIVE_START_DATE, dos);
+
+			// java.util.Date
+
+			writeDate(this.EFFECTIVE_END_DATE, dos);
 
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -1463,7 +1505,8 @@ public class row1Struct
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString());
 		sb.append("[");
-		sb.append("CASE_ID=" + String.valueOf(CASE_ID));
+		sb.append("ENTERPRISE_ID=" + String.valueOf(ENTERPRISE_ID));
+		sb.append(",CASE_ID=" + String.valueOf(CASE_ID));
 		sb.append(",CASE_NUM=" + CASE_NUM);
 		sb.append(",REV=" + String.valueOf(REV));
 		sb.append(",WORKFLOW_SEQ_NUM=" + String.valueOf(WORKFLOW_SEQ_NUM));
@@ -1564,9 +1607,15 @@ public class row1Struct
 		sb.append(",UD_TEXT_11_J=" + UD_TEXT_11_J);
 		sb.append(",UD_TEXT_12_J=" + UD_TEXT_12_J);
 		sb.append(",INITIAL_JUSTIFICATION_J=" + INITIAL_JUSTIFICATION_J);
-		sb.append(",LOCK_STATUS_ID=" + String.valueOf(LOCK_STATUS_ID));
-		sb.append(",MEDICALLY_CONFIRM=" + String.valueOf(MEDICALLY_CONFIRM));
-		sb.append(",ENTERPRISE_ID=" + String.valueOf(ENTERPRISE_ID));
+		sb.append(",DLP_REVISION_NUMBER="
+				+ String.valueOf(DLP_REVISION_NUMBER));
+		sb.append(",REVISION_DELETE_FLAG="
+				+ String.valueOf(REVISION_DELETE_FLAG));
+		sb.append(",DELETED_FLAG=" + String.valueOf(DELETED_FLAG));
+		sb.append(",EFFECTIVE_START_DATE="
+				+ String.valueOf(EFFECTIVE_START_DATE));
+		sb.append(",EFFECTIVE_END_DATE="
+				+ String.valueOf(EFFECTIVE_END_DATE));
 		sb.append("]");
 
 		return sb.toString();
@@ -1579,7 +1628,19 @@ public class row1Struct
 
 		int returnValue = -1;
 
+		returnValue = checkNullsAndCompare(this.ENTERPRISE_ID,
+				other.ENTERPRISE_ID);
+		if (returnValue != 0) {
+			return returnValue;
+		}
+
 		returnValue = checkNullsAndCompare(this.CASE_ID, other.CASE_ID);
+		if (returnValue != 0) {
+			return returnValue;
+		}
+
+		returnValue = checkNullsAndCompare(this.DLP_REVISION_NUMBER,
+				other.DLP_REVISION_NUMBER);
 		if (returnValue != 0) {
 			return returnValue;
 		}

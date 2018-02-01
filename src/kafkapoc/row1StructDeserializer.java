@@ -32,7 +32,7 @@ public class row1StructDeserializer implements Deserializer {
 	    row1Struct row1 = null;
 	    try {
 	    	
-	    	System.out.println("Argument:"+arg1);
+	    	//System.out.println("Argument:"+arg1);
 	    	row1 = mapper.readValue(arg1, row1Struct.class);
 	    } catch (Exception e) {
 
